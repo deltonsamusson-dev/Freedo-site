@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Freedom — soluções digitais e aplicativos para uma experiência simples, moderna e segura.">
+  <title>Freedom — freedom.com.mz</title>
+  <style>
+    :root{
+      --bg:#050b14;
+      --bg2:#081322;
+      --card:rgba(13,27,45,.78);
+      --line:rgba(255,255,255,.09);
+      --text:#f5f8fc;
+      --muted:#9eacbd;
+      --blue:#4d8dff;
+      --blue2:#2367e8;
+      --cyan:#32d6ff;
+      --green:#29d391;
+      --shadow:0 24px 70px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 80% 8%,rgba(53,128,255,.18),transparent 28%),
+        radial-gradient(circle at 10% 35%,rgba(50,214,255,.07),transparent 25%),
+        linear-gradient(180deg,var(--bg),#07111e 55%,#050a12);
+      min-height:100vh;
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(5,11,20,.72);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.4px}
+    .brand-mark{
+      width:38px;height:38px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--blue),#5ce0ff);
+      box-shadow:0 8px 28px rgba(54,132,255,.28);
+      font-size:20px;font-weight:900;
+    }
+    .brand span{font-size:19px}
+    nav{display:flex;gap:28px;color:#b9c5d5;font-size:14px}
+    nav a:hover{color:white}
+    .nav-btn{
+      padding:10px 16px;border:1px solid var(--line);border-radius:11px;
+      color:white;font-size:13px;background:rgba(255,255,255,.04)
+    }
+    .hero{padding:105px 0 90px;position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 11px;border:1px solid rgba(77,141,255,.22);
+      background:rgba(77,141,255,.08);border-radius:999px;
+      color:#9fc1ff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+      margin-bottom:22px;
+    }
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green)}
+    h1{font-size:clamp(45px,6vw,76px);line-height:1.02;letter-spacing:-3.8px;max-width:760px}
+    h1 em{font-style:normal;background:linear-gradient(100deg,#fff 15%,#74b1ff 65%,#49dfff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);font-size:18px;max-width:650px;margin:25px 0 32px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      padding:14px 20px;border-radius:12px;font-size:14px;font-weight:750;
+      transition:.2s transform,.2s box-shadow,.2s background;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .primary{background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 12px 32px rgba(35,103,232,.27)}
+    .secondary{border:1px solid var(--line);background:rgba(255,255,255,.045)}
+    .hero-card{
+      position:relative;border:1px solid var(--line);border-radius:28px;
+      padding:22px;background:linear-gradient(145deg,rgba(18,39,64,.9),rgba(7,16,29,.8));
+      box-shadow:var(--shadow);overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";position:absolute;width:210px;height:210px;border-radius:50%;
+      background:rgba(77,141,255,.17);filter:blur(45px);right:-70px;top:-70px
+    }
+    .phone{
+      width:min(290px,80%);margin:15px auto 5px;aspect-ratio:9/17;
+      border:7px solid #101d2e;border-radius:38px;background:#07101d;
+      box-shadow:0 20px 60px rgba(0,0,0,.55);position:relative;padding:25px 16px;
+    }
+    .phone-notch{width:85px;height:22px;background:#101d2e;border-radius:0 0 15px 15px;position:absolute;top:-7px;left:50%;transform:translateX(-50%)}
+    .screen-logo{width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,var(--blue),#4be0ff);display:grid;place-items:center;font-size:28px;font-weight:900;margin:35px auto 22px}
+    .screen-title{text-align:center;font-size:20px;font-weight:800}
+    .screen-sub{text-align:center;color:#74849a;font-size:10px;margin-top:6px}
+    .screen-line{height:9px;border-radius:10px;background:#122238;margin-top:25px}
+    .screen-line.small{width:68%;margin-top:10px}
+    .screen-btn{height:38px;border-radius:10px;background:linear-gradient(90deg,#286ce7,#3f8cff);margin-top:25px}
+    section{padding:90px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}
+    .kicker{color:#6ea5ff;font-size:12px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase;margin-bottom:10px}
+    h2{font-size:clamp(30px,4vw,44px);letter-spacing:-1.7px;line-height:1.1}
+    .section-head p{color:var(--muted);max-width:470px}
+    .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .app-card{
+      border:1px solid var(--line);background:linear-gradient(145deg,rgba(15,31,51,.8),rgba(8,17,29,.82));
+      border-radius:20px;padding:24px;transition:.25s transform,.25s border-color;
+    }
+    .app-card:hover{transform:translateY(-5px);border-color:rgba(77,141,255,.35)}
+    .app-icon{width:58px;height:58px;border-radius:17px;display:grid;place-items:center;background:linear-gradient(135deg,#245ed0,#42cfff);font-size:23px;font-weight:900;box-shadow:0 10px 25px rgba(39,112,229,.2)}
+    .app-card h3{font-size:20px;margin:19px 0 7px}
+    .app-card p{font-size:14px;color:var(--muted);min-height:68px}
+    .app-actions{display:flex;gap:8px;margin-top:21px}
+    .app-actions a{flex:1;padding:11px 8px;text-align:center;border-radius:10px;font-size:12px;font-weight:750;border:1px solid var(--line)}
+    .app-actions .download{background:#2166df;border-color:#2166df}
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+    .about-box{padding:30px;border:1px solid var(--line);border-radius:22px;background:rgba(11,25,42,.65)}
+    .about p{color:var(--muted);margin-top:17px;font-size:16px}
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+    .feature{padding:17px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025)}
+    .feature b{display:block;margin-bottom:4px;font-size:14px}
+    .feature span{color:var(--muted);font-size:12px}
+    .cta{
+      border:1px solid rgba(77,141,255,.2);border-radius:26px;padding:55px;
+      background:radial-gradient(circle at 80% 20%,rgba(65,147,255,.2),transparent 35%),linear-gradient(135deg,#0c203a,#081321);
+      text-align:center;
+    }
+    .cta p{color:var(--muted);max-width:590px;margin:14px auto 26px}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:#718094;font-size:12px}
+    .footer-row{display:flex;justify-content:space-between;gap:20px}
+    .domain{color:#aab8ca}
+    @media(max-width:850px){
+      nav{display:none}.hero{padding-top:70px}.hero-grid,.about{grid-template-columns:1fr;gap:40px}
+      .hero-card{max-width:470px;margin:auto}.apps{grid-template-columns:1fr}
+      .section-head{display:block}.section-head p{margin-top:14px}.cta{padding:38px 22px}
+    }
+    @media(max-width:520px){
+      h1{letter-spacing:-2.4px}.hero p{font-size:16px}.phone{width:235px}
+      .features{grid-template-columns:1fr}.footer-row{display:block}.footer-row div+div{margin-top:9px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="#" class="brand"><div class="brand-mark">F</div><span>Freedom</span></a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#aplicativos">Aplicativos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-btn" href="#aplicativos">Ver aplicativos</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Tecnologia • Aplicativos • Liberdade</div>
+        <h1>Experiências digitais feitas para <em>avançar.</em></h1>
+        <p>A Freedom desenvolve soluções digitais simples, modernas e acessíveis. Encontre os nossos aplicativos, conheça a organização e escolha a forma mais conveniente de instalar.</p>
+        <div class="actions">
+          <a class="btn primary" href="#aplicativos">Explorar aplicativos →</a>
+          <a class="btn secondary" href="#sobre">Conhecer a Freedom</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="screen-logo">F</div>
+          <div class="screen-title">Freedom</div>
+          <div class="screen-sub">Digital solutions</div>
+          <div class="screen-line"></div>
+          <div class="screen-line small"></div>
+          <div class="screen-btn"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="aplicativos">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="kicker">Ecossistema Freedom</div><h2>Os nossos aplicativos</h2></div>
+        <p>Instale diretamente o APK ou visite a página do aplicativo na Google Play.</p>
+      </div>
+      <div class="apps">
+        <article class="app-card">
+          <div class="app-icon">K</div>
+          <h3>KashPro</h3>
+          <p>Plataforma de análise e acompanhamento do mercado financeiro, com uma experiência moderna.</p>
+          <div class="app-actions">
+            <a class="download" href="downloads/kashpro.apk">↓ Baixar APK</a>
+            <a href="https://play.google.com/" target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </article>
+        <article class="app-card">
+          <div class="app-icon">C</div>
+          <h3>Copiloto</h3>
+          <p>Assistente digital da Freedom, criado para oferecer uma experiência simples e organizada.</p>
+          <div class="app-actions">
+            <a class="download" href="downloads/copiloto.apk">↓ Baixar APK</a>
+            <a href="https://play.google.com/" target="_blank" rel="noopener">Google Play</a>
+          </div>
+        </article>
+        <article class="app-card">
+          <div class="app-icon">+</div>
+          <h3>Em breve</h3>
+          <p>Novos produtos e aplicativos serão adicionados ao ecossistema Freedom à medida que forem lançados.</p>
+          <div class="app-actions">
+            <a class="download" href="#contacto">Saber mais</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container about">
+      <div>
+        <div class="kicker">Sobre a organização</div>
+        <h2>Uma presença digital simples, séria e profissional.</h2>
+        <p style="color:var(--muted);margin-top:18px">A Freedom reúne soluções digitais num único espaço, permitindo que os utilizadores encontrem rapidamente informações, aplicativos e canais oficiais.</p>
+      </div>
+      <div class="about-box">
+        <h3>Por que Freedom?</h3>
+        <p>O nosso objetivo é tornar o acesso às nossas soluções mais simples: uma página, informações claras e instalação rápida.</p>
+        <div class="features">
+          <div class="feature"><b>01 · Simples</b><span>Navegação direta e sem complicações.</span></div>
+          <div class="feature"><b>02 · Moderna</b><span>Design pensado para dispositivos móveis.</span></div>
+          <div class="feature"><b>03 · Acessível</b><span>Aplicativos organizados num único lugar.</span></div>
+          <div class="feature"><b>04 · Oficial</b><span>Central para os produtos da organização.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="cta">
+        <div class="kicker">Freedom</div>
+        <h2>Tem uma questão?</h2>
+        <p>Entre em contacto com a nossa equipa para obter informações sobre os aplicativos e os serviços da organização.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn primary" href="mailto:contacto@freedom.com.mz">Contactar a Freedom</a>
+          <a class="btn secondary" href="#inicio">Voltar ao início ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2026 Freedom. Todos os direitos reservados.</div>
+    <div class="domain">freedom.com.mz</div>
+  </div>
+</footer>
+</body>
+</html>

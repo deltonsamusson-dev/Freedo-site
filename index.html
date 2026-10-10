@@ -346,22 +346,31 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 </footer>
 
 <script>
-/* =====================================================
-   COLOQUE AQUI OS SEUS LINKS
-   Cole entre as aspas o link de cada botão.
-   Enquanto estiver vazio (""), o botão aparece apagado.
-   ===================================================== */
+/* Links de download e instalação.
+   Os botões MediaFire abrem a página do APK correspondente.
+   Os botões Google Play ficam desativados até serem configurados. */
 var LINKS = {
-  "https://www.mediafire.com/file/pg9typ1lu8462ec/Deriv_AI_Analytics_1.0.apk/file":  "",   // MediaFire - Deriv AI Analytics
-  "deriv-play":       "",   // Google Play - Deriv AI Analytics
-  "https://www.mediafire.com/file/l35n0lx4i7wrn0s/N_Shopy_1.0.apk/file: "",   // MediaFire - N Shopy
-  "nshopy-play":      ""    // Google Play - N Shopy
+  "deriv-mediafire": "https://www.mediafire.com/file/pg9typ1lu8462ec/Deriv_AI_Analytics_1.0.apk/file",
+  "deriv-play": "",
+  "nshopy-mediafire": "https://www.mediafire.com/file/l35n0lx4i7wrn0s/N_Shopy_1.0.apk/file",
+  "nshopy-play": ""
 };
 
-document.querySelectorAll("[data-link]").forEach(function(a){
+document.querySelectorAll("[data-link]").forEach(function(a) {
   var url = LINKS[a.getAttribute("data-link")];
-  if(url){ a.href = url; a.target = "_blank"; a.rel = "noopener"; }
-  else { a.classList.add("off"); a.setAttribute("aria-disabled","true"); a.setAttribute("tabindex","-1"); }
+  if (url) {
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.classList.remove("off");
+    a.removeAttribute("aria-disabled");
+    a.removeAttribute("tabindex");
+  } else {
+    a.href = "#";
+    a.classList.add("off");
+    a.setAttribute("aria-disabled", "true");
+    a.setAttribute("tabindex", "-1");
+  }
 });
 </script>
 </body>

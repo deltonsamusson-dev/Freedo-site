@@ -86,6 +86,7 @@ section{padding:88px 0}
 .dl-b a.mf{background:var(--ink);color:#fff}
 .dl-b a.mf:hover{background:#2a3d34}
 .dl-b a.pl:hover{background:var(--soft)}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
 .dl-b a.off{opacity:.45;pointer-events:none;border-style:dashed}
 
 /* comparar */
@@ -227,6 +228,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
             <a class="mf" data-link="deriv-mediafire" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 10l6 6 6-6M5 21h14"/></svg><span>Baixar APK<small>pelo MediaFire</small></span></a>
             <a class="pl" data-link="deriv-play" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5v19L20 12z"/></svg><span>Google Play<small>instalar pela loja</small></span></a>
           </div>
+          <p class="note">Abre a página do MediaFire: toque no botão <b>Download</b> lá para baixar o APK.</p>
         </div>
       </div>
     </article>
@@ -264,6 +266,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
             <a class="mf" data-link="nshopy-mediafire" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 10l6 6 6-6M5 21h14"/></svg><span>Baixar APK<small>pelo MediaFire</small></span></a>
             <a class="pl" data-link="nshopy-play" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5v19L20 12z"/></svg><span>Google Play<small>instalar pela loja</small></span></a>
           </div>
+          <p class="note">Abre a página do MediaFire: toque no botão <b>Download</b> lá para baixar o APK.</p>
         </div>
       </div>
     </article>
@@ -356,12 +359,26 @@ var LINKS = {
   "nshopy-play": ""
 };
 
+/* DOWNLOAD DIRETO (opcional): envie os APK para a pasta "downloads" do seu
+   hospedeiro e escreva o caminho aqui. Com isso, o botão "Baixar APK" baixa
+   na hora, sem abrir o MediaFire. Deixe "" para continuar a usar o MediaFire. */
+var DIRECT = {
+  "deriv-mediafire": "",   // ex.: "downloads/deriv-ai-analytics.apk"
+  "nshopy-mediafire": ""   // ex.: "downloads/n-shopy.apk"
+};
+
 document.querySelectorAll("[data-link]").forEach(function(a) {
-  var url = LINKS[a.getAttribute("data-link")];
+  var key = a.getAttribute("data-link");
+  var direct = DIRECT[key];
+  var url = direct || LINKS[key];
   if (url) {
     a.href = url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
+    if (direct) {
+      a.setAttribute("download", "");
+    } else {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    }
     a.classList.remove("off");
     a.removeAttribute("aria-disabled");
     a.removeAttribute("tabindex");
@@ -374,4 +391,4 @@ document.querySelectorAll("[data-link]").forEach(function(a) {
 });
 </script>
 </body>
-  </html>
+                                                    </html>
